@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/MutantsFunctionStack/FunctionStack.iml" filepath="$PROJECT_DIR$/MutantsFunctionStack/FunctionStack.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MutantFunctions.iml" filepath="$PROJECT_DIR$/MutantFunctions.iml" />
+    </modules>
+  </component>
+</project>
