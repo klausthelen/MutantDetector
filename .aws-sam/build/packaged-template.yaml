@@ -12,7 +12,7 @@ Resources:
   IsMutantFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://lambditas/86c01b32e8714b0d6a99f4410c6c3ae6
+      CodeUri: s3://lambditas/3045535e403173f5834ee559c3aea140
       Handler: mutantfunctionhandlers.App::handleRequest
       Runtime: java11
       MemorySize: 512
@@ -28,7 +28,7 @@ Resources:
   MutantStatsFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://lambditas/099d4d079c9f07a0221b41a63b143191
+      CodeUri: s3://lambditas/36d61417c1771a078bfa5583b9f969b0
       Handler: mutantfunctionhandlers.StatsApp::handleRequest
       Runtime: java11
       MemorySize: 512

@@ -147,7 +147,6 @@ public class DnaMutantScanner implements ScannableNucleicAcid {
     }
 
     public IsMutantDTOResponse scanDna(ArrayList<String> dna){
-        cacheRepository.deleteAllKeys();
         IsMutantDTOResponse response = new IsMutantDTOResponse();
         if(!checkDna(dna)){
             response.setState(false);
@@ -178,6 +177,12 @@ public class DnaMutantScanner implements ScannableNucleicAcid {
             cacheRepository.set("human_" + hashCode, hashCode);
             cacheRepository.incr("count_human_dna");
         }
+        float ratio = Float.parseFloat(cacheRepository.get("count_mutant_dna"))/
+                    Float.parseFloat(cacheRepository.get("count_human_dna"));
+        if(Float.isInfinite(ratio)){
+            ratio = 0;
+        }
+        cacheRepository.set("ratio" , String.valueOf(ratio));
     }
 
 }

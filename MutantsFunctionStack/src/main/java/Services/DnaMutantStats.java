@@ -12,18 +12,10 @@ public class DnaMutantStats {
     }
 
     public StatsDTO getMutantStats(){
-        float ratio;
-        try{
-            ratio = (float)Integer.parseInt(cacheRepository.get("count_mutant_dna"))/
-                    Integer.parseInt(cacheRepository.get("count_human_dna"));
-        }
-        catch (Exception e){
-            ratio = 0;
-        }
         StatsDTO mutantStats = new StatsDTO();
         mutantStats.setCount_mutant_dna(Integer.parseInt(cacheRepository.get("count_mutant_dna")));
         mutantStats.setCount_human_dna(Integer.parseInt(cacheRepository.get("count_human_dna")));
-        mutantStats.setRatio(ratio);
+        mutantStats.setRatio(Float.parseFloat(cacheRepository.get("ratio")));
         return  mutantStats;
     }
 }
