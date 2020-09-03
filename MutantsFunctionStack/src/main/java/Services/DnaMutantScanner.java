@@ -8,11 +8,11 @@ import Repositories.CacheRepository;
 
 import java.util.ArrayList;
 
-public class AdnMutantScanner implements ScannableNucleicAcid {
+public class DnaMutantScanner implements ScannableNucleicAcid {
 
     private CacheRepository cacheRepository;
 
-    public AdnMutantScanner() {
+    public DnaMutantScanner() {
         this.cacheRepository = new CacheRepository();
     }
 
@@ -147,6 +147,7 @@ public class AdnMutantScanner implements ScannableNucleicAcid {
     }
 
     public IsMutantDTOResponse scanDna(ArrayList<String> dna){
+        cacheRepository.deleteAllKeys();
         IsMutantDTOResponse response = new IsMutantDTOResponse();
         if(!checkDna(dna)){
             response.setState(false);
@@ -165,7 +166,6 @@ public class AdnMutantScanner implements ScannableNucleicAcid {
             response.setStatusCode(403);
             setMutantStats(false,dnaHashCode);
         }
-        getMutantStats();
         return  response;
     }
 
@@ -178,21 +178,6 @@ public class AdnMutantScanner implements ScannableNucleicAcid {
             cacheRepository.set("human_" + hashCode, hashCode);
             cacheRepository.incr("count_human_dna");
         }
-        double ratio;
-        try{
-            ratio = Integer.parseInt(cacheRepository.get("count_mutant_dna"))/
-                    Integer.parseInt(cacheRepository.get("count_human_dna"));
-        }
-        catch (Exception e){
-            ratio = 0;
-        }
-        cacheRepository.set("ratio", String.valueOf(ratio));
     }
 
-    public void getMutantStats(){
-        System.out.println("count_mutant_dna");
-        System.out.println(cacheRepository.get("count_mutant_dna"));
-        System.out.println("count_human_dna");
-        System.out.println(cacheRepository.get("count_human_dna"));
-    }
 }

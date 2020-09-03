@@ -12,7 +12,7 @@ Resources:
   IsMutantFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: s3://lambditas/e632f31d6cd6994f915f35d79478e722
+      CodeUri: s3://lambditas/ef8fba939f563edf2045fb19c66e0094
       Handler: mutantfunctionhandlers.App::handleRequest
       Runtime: java11
       MemorySize: 512
@@ -25,6 +25,22 @@ Resources:
           Properties:
             Path: /mutant
             Method: post
+  MutantStatsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: s3://lambditas/5c98aced9545a533532aa83d861c824d
+      Handler: mutantfunctionhandlers.StatsApp::handleRequest
+      Runtime: java11
+      MemorySize: 512
+      Environment:
+        Variables:
+          PARAM1: VALUE
+      Events:
+        GetStats:
+          Type: Api
+          Properties:
+            Path: /stats
+            Method: get
 Outputs:
   MutantApi:
     Description: API Gateway endpoint URL for Test stage for Mutants functions

@@ -25,6 +25,22 @@ Resources:
           Properties:
             Path: /mutant
             Method: post
+  MutantStatsFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: MutantStatsFunction
+      Handler: mutantfunctionhandlers.StatsApp::handleRequest
+      Runtime: java11
+      MemorySize: 512
+      Environment:
+        Variables:
+          PARAM1: VALUE
+      Events:
+        GetStats:
+          Type: Api
+          Properties:
+            Path: /stats
+            Method: get
 Outputs:
   MutantApi:
     Description: API Gateway endpoint URL for Test stage for Mutants functions
