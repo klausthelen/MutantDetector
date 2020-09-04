@@ -6,9 +6,7 @@ import java.util.Map;
 import Business.DTOs.IsMutantDTO;
 import Business.DTOs.IsMutantDTOResponse;
 
-import Business.DTOs.StatsDTO;
 import Services.DnaMutantScanner;
-import Services.DnaMutantStats;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
